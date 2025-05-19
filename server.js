@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 const app = express()
 app.use(express.json())
 
-
+//Rota para criar usuário
 app.post('/usuarios', async (req, res) => {
     res.status(200).json(users)
     await prisma.user.create({
@@ -17,7 +17,7 @@ app.post('/usuarios', async (req, res) => {
         }
     })
 })
-
+//Rota para buscar
 app.get('/usuarios', async (req, res) => {
     let users = []
 
@@ -35,7 +35,7 @@ app.get('/usuarios', async (req, res) => {
 
     res.status(200).json(users)
 })
-
+//Rota para editar
 app.put('/usuarios/:id', async (req, res) => {
 
     await prisma.user.update({
@@ -51,7 +51,7 @@ app.put('/usuarios/:id', async (req, res) => {
     })
     res.status(200).json(req.body)
 })
-
+//Rota para deletar
 app.delete('/usuarios/:id', async (req, res) => {
 
     await prisma.user.delete({
